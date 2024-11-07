@@ -1,0 +1,77 @@
+.outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+}
+.register-container {
+    background-color: #fff;
+    padding: 15px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* 标题样式 */
+  .register-container h2 {
+    font-size: 24px;
+    color: #4267B2;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .register-container p {
+    font-size: 16px;
+    color: #4267B2;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+
+  .register-container .register.error-message p {
+    color: rgb(196, 5, 5);
+    text-align: center;
+
+  }
+  
+  /* 表单输入样式 */
+  .register-container input[type="text"],
+  .register-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* 按钮样式 */
+  .register-container .register-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #266918;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .register-container .back-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: gray;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .register-container button:hover {
+    opacity: 0.9;
+  }
+  
