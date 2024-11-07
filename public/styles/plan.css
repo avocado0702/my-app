@@ -1,0 +1,107 @@
+/* 列表容器样式 */
+.plan-list {
+  width: 250px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+  background-color: #fff;
+  height: 100vh;
+}
+
+/* 标题样式 */
+.plan-list h2 {
+  font-size: 20px;
+  color: #1877f2;
+  margin: 15px;
+}
+
+/* 列表元素样式 */
+.list-element {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+.list-element:hover {
+  background-color: #f0f2f5;
+}
+
+.list-element-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.list-element-title {
+  font-size: 16px;
+  color: #333;
+}
+
+.list-element-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+/* 按钮样式 */
+button {
+  background-color: #4267B2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+
+.plan-info, .plan-info-edit {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  .plan-info h2, .plan-info-edit h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .plan-info p, .plan-info-edit label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .plan-info-edit input[type="text"], .plan-info-edit textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .plan-info-edit table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .plan-info-edit td {
+    padding: 10px;
+    vertical-align: top;
+  }
+  
+  .plan-info-edit td:first-child {
+    width: 100px;
+    font-weight: bold;
+  }

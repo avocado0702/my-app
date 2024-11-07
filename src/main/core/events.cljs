@@ -49,4 +49,22 @@
                          (assoc db :log-in-error-message log-in-error-message)))
 
 
+(re-frame/reg-event-db
+  :delete-item
+  (fn [db [_ item-id]]
+    (js/console.log "Deleting a item:")
+    (js/console.log "Deleted item id:" item-id)
+    (update db :plan-list (fn [items] (remove #(= (:id %) item-id) items)))))
+
+(re-frame/reg-event-db
+  :add-item
+  (fn [db]
+    (js/console.log "Adding a new item")
+    (let [new-id (if (empty? (:plan-list db)) 
+                   1
+                   (inc (reduce max (map :id (:plan-list db)))))]  
+      (update db
+              :plan-list
+              conj
+              {:id new-id, :titel "new plan", :text "new plan introduction"}))))
 

@@ -14,7 +14,7 @@
         [:p "Quickly and easily"]
         [:form
          {:on-submit (fn [e]
-                       (.preventDefault e) ;; 防止表单提交刷新页面
+                       (.preventDefault e) 
                        (re-frame/dispatch [:create-account @username @password
                                            @password-confirm]))}
          ;; 用户名输入框，带 required 属性
