@@ -48,6 +48,11 @@
                        (fn [db [_ log-in-error-message]]
                          (assoc db :log-in-error-message log-in-error-message)))
 
+(re-frame/reg-event-db :set-selected-plan-id
+                       (fn [db [_ plan-id]]
+                         (js/console.log "Setting selected plan id to:" plan-id)
+                         (assoc db :selected-plan-id plan-id)))
+
 
 (re-frame/reg-event-db
   :delete-item
@@ -67,3 +72,22 @@
               :plan-list
               conj
               {:id new-id, :titel "new plan", :text "new plan introduction"}))))
+
+
+
+(re-frame/reg-event-db :update-plan
+                       (fn [db [_ selected-item-id edited-title edited-text]]
+                         (js/console.log "Updating a plan item:")
+                         (js/console.log "Updated item id:" selected-item-id)
+                         (js/console.log "Updated item title:" edited-title)
+                         (js/console.log "Updated item text:" edited-text)
+                         (update db
+                                 :plan-list
+                                 (fn [items]
+                                   (map #(if (= (:id %) selected-item-id)
+                                           (assoc %
+                                             :titel edited-title
+                                             :text edited-text)
+                                           %)
+                                     items)))))
+
