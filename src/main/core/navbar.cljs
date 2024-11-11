@@ -3,11 +3,10 @@
 
 (defn navbar
   []
-  [:nav {:class "navbar"} ;; 添加 navbar 样式类
-   [:div {:class "navbar-container"} ;; 添加 navbar-container 样式类
-    ;; 标题
+  [:nav {:class "navbar"} 
+   [:div {:class "navbar-container"} 
     [:span {:class "navbar-title"} "My App"]
-    ;; 导航链接
+    
     [:div
      [:a
       {:class "navbar-link",

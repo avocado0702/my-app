@@ -1,5 +1,4 @@
-(ns main.core.db
-  (:require [re-frame.core :as re-frame]))
+(ns main.core.db)
 
 (def default-db
   {:plan-list

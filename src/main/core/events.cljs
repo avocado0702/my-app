@@ -67,4 +67,3 @@
               :plan-list
               conj
               {:id new-id, :titel "new plan", :text "new plan introduction"}))))
-

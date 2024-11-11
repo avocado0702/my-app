@@ -11,4 +11,4 @@
        [:div.plan-list-container
         [plan-list selected-item]]
        [:div.plan-info-container
-        [plan-info @selected-item edit-mode]]])))
+        [plan-info selected-item edit-mode]]])))
