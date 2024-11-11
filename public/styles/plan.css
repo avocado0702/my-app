@@ -30,6 +30,12 @@
   background-color: #f0f2f5;
 }
 
+.list-element.highlight {
+  background-color: #f0f8ff;  
+  border: 1px solid #007acc;  
+}
+
+
 .list-element-header {
   display: flex;
   justify-content: space-between;

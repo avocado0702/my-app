@@ -9,12 +9,17 @@
 
 (defn list-element
   [item]
-  (fn [] [:div.list-element
-          {:on-click #(do (re-frame/dispatch [:set-selected-plan-id
-                                              (:id item)])
-                          (js/console.log "This item id:" (:id item)))}
-          [:div.list-element-header [:h4.list-element-title (:titel item)]
-           [:div.list-element-buttons [delete-btn (:id item)]]]]))
+  (let [plan (re-frame/subscribe [:get-plan-by-id (:id item)])
+        current-plan-id (re-frame/subscribe [:get-selected-plan-id])]
+        
+    (fn [] [:div.list-element
+            {:class (when (= (:id item) @current-plan-id) "highlight"),
+             :on-click #(do (re-frame/dispatch [:set-selected-plan-id
+                                                (:id item)])
+                            (js/console.log "This item id:" (:id item)))}
+            [:div.list-element-header [:h4.list-element-title (:titel @plan)]
+             [:div.list-element-buttons [delete-btn (:id item)]]]])))
+
 
 (defn plan-list []
   (let [pl (re-frame/subscribe [:get-plan-list])]

@@ -16,20 +16,18 @@
                                        @edited-text]))}
    "Save"])
 
-
-
 (defn plan-info
   [edit-mode]
   (let [selected-item-id (re-frame/subscribe [:get-selected-plan-id])
         edited-title (r/atom nil)
-        edited-text (r/atom nil)]
+        edited-text (r/atom nil)
+        last-item-id (r/atom nil)] ;; 用于跟踪上一个 selected-item-id
     (fn []
       (let [current-plan @(re-frame/subscribe [:get-plan-by-id
                                                @selected-item-id])]
-       
-       
-        ;; 初始化编辑内容，仅当 current-plan 存在且编辑框为空时执行
-        (when (and current-plan (nil? @edited-title))
+        ;; 当 selected-item-id 变化时，更新编辑内容
+        (when (and current-plan (not= @last-item-id @selected-item-id))
+          (reset! last-item-id @selected-item-id) ;; 更新 last-item-id
           (reset! edited-title (:titel current-plan))
           (reset! edited-text (:text current-plan)))
         (if @selected-item-id
