@@ -62,8 +62,6 @@
 (re-frame/reg-event-db
   :delete-item
   (fn [db [_ item-id]]
-    (js/console.log "Deleting a item:")
-    (js/console.log "Deleted item id:" item-id)
     (update db :plan-list (fn [items] (remove #(= (:id %) item-id) items)))))
 
 (re-frame/reg-event-db
@@ -110,3 +108,32 @@
                                                                   (update task :is-completed not)
                                                                   task))
                                                               tasks))) plan)) plans)))))
+
+
+(re-frame/reg-event-db 
+ :add-task 
+ (fn [db [_ plan-id task-description]]
+   (update-in db [:plan-list] 
+              (fn [plans] 
+                (map (fn [plan] 
+                       (if (= (:id plan) plan-id) 
+                         (update plan :tasks conj {:id (inc (count (:tasks plan))), 
+                                                   :description task-description, 
+                                                   :is-completed false}) 
+                         plan)) 
+                     plans)))))
+   
+   
+(re-frame/reg-event-db 
+ :delete-task
+ (fn [db [_ plan-id task-id]]
+       (update-in db [:plan-list]
+                  (fn [plans] 
+                    (map (fn [plan] 
+                           (if (= (:id plan) plan-id)
+                             (update plan :tasks (remove #(= (:id %) task-id)))
+                             plan))
+                             plans)))))
+
+
+

@@ -3,9 +3,9 @@
 (def default-db
   {:plan-list
      [{:id 1,
-       :titel "plan 1",
+       :titel "my plan for monday",
        :description
-         "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam",
+         "things i need to do on monday",
        :completed-tasks 2,
        :total-tasks 3,
        :tasks [{:id 1, :description "dientist", :is-completed false}

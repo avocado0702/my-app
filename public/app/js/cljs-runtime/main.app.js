@@ -1,9 +1,9 @@
 goog.provide('main.app');
 main.app.page_content = (function main$app$page_content(){
 var current_page = cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"get-current-page","get-current-page",-871447377)], null)));
-var G__26275 = current_page;
-var G__26275__$1 = (((G__26275 instanceof cljs.core.Keyword))?G__26275.fqn:null);
-switch (G__26275__$1) {
+var G__27556 = current_page;
+var G__27556__$1 = (((G__27556 instanceof cljs.core.Keyword))?G__27556.fqn:null);
+switch (G__27556__$1) {
 case "home":
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [main.core.pages.homepage.home_page], null);
 
@@ -37,9 +37,9 @@ console.log("the page now",current_page);
 if(cljs.core.truth_(is_logged_in)){
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [main.core.navbar.navbar,current_page], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"margin-top","margin-top",392161226),"60px"], null)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [main.app.page_content], null)], null)], null);
 } else {
-var G__26276 = current_page;
-var G__26276__$1 = (((G__26276 instanceof cljs.core.Keyword))?G__26276.fqn:null);
-switch (G__26276__$1) {
+var G__27557 = current_page;
+var G__27557__$1 = (((G__27557 instanceof cljs.core.Keyword))?G__27557.fqn:null);
+switch (G__27557__$1) {
 case "login":
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [main.core.pages.login.login_page], null);
 
