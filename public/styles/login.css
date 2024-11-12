@@ -32,31 +32,6 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
-  
-  /* 按钮样式 */
-  .login-container .login-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #4267B2;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .login-container .register-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #2c7b1d;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
 
   .login.error-message p {
     color: rgb(208, 3, 3);
