@@ -22,6 +22,7 @@
    :current-page :home,
    :log-in-error-message "",
    :register-error-message ""
+   :edit-mode false,
    :selected-plan-id nil})
 
 

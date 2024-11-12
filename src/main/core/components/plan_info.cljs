@@ -3,22 +3,22 @@
             [reagent.core :as r]))
 
 (defn edit-btn
-  [edit-mode]
-  [:button
-   {:on-click #(do (reset! edit-mode true)
-                   (js/console.log "EDIT MODE" @edit-mode))} "Edit"])
+  []
+  [:button {:on-click #(re-frame/dispatch [:set-edit-mode true])} "Edit"])
 
 (defn save-btn
-  [edit-mode selected-item-id edited-title edited-text]
+  [selected-item-id edited-title edited-text]
   [:button
-   {:on-click #(do (reset! edit-mode false)
-                   (re-frame/dispatch [:update-plan @selected-item-id @edited-title
-                                       @edited-text]))}
+   {:on-click #(do (re-frame/dispatch [:update-plan @selected-item-id @edited-title
+                                       @edited-text])
+                   (re-frame/dispatch [:set-edit-mode false])
+                   )}
    "Save"])
 
 (defn plan-info
-  [edit-mode]
-  (let [selected-item-id (re-frame/subscribe [:get-selected-plan-id])
+  []
+  (let [edit-mode (re-frame/subscribe [:get-edit-mode])
+        selected-item-id (re-frame/subscribe [:get-selected-plan-id])
         edited-title (r/atom nil)
         edited-text (r/atom nil)
         last-item-id (r/atom nil)] ;; 用于跟踪上一个 selected-item-id
@@ -50,7 +50,7 @@
                    :on-change #(reset! edited-text (-> %
                                                        .-target
                                                        .-value))}]]]]]
-             [save-btn edit-mode selected-item-id edited-title edited-text]]
+             [save-btn selected-item-id edited-title edited-text]]
             [:div.plan-info [:h2 (str "Plan Title: " (:titel current-plan))]
              [:p (str "Plan Content: " (:text current-plan))]
              [edit-btn edit-mode]])

@@ -43,6 +43,11 @@
 (re-frame/reg-event-db :set-login-status
                        (fn [db [_ status]] (assoc db :is-logged-in status)))
 
+(re-frame/reg-event-db :set-edit-mode
+                       (fn [db [_ edit-mode]]
+                         (js/console.log "Setting edit mode to:" edit-mode)
+                         (assoc db :edit-mode edit-mode)))
+
 
 (re-frame/reg-event-db :set-login-error-message
                        (fn [db [_ log-in-error-message]]
