@@ -8,9 +8,9 @@
          "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam",
        :completed-tasks 2,
        :total-tasks 3,
-       :tasks [{:id 1, :description "task 1", :is-completed false}
-               {:id 2, :description "task 2", :is-completed true}
-               {:id 3, :description "task 3", :is-completed true}]}
+       :tasks [{:id 1, :description "dientist", :is-completed false}
+               {:id 2, :description "shopping", :is-completed true}
+               {:id 3, :description "visit grandma", :is-completed true}]}
       {:id 2,
        :titel "plan 2",
        :description "Lorem ipsum dolor sit amet,",

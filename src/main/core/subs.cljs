@@ -1,7 +1,7 @@
 (ns main.core.subs
   (:require [re-frame.core :as re-frame]))
 
-(re-frame/reg-sub :get-plan-list (fn [db _] (:plan-list db))) ;get-plan-list 是这个订阅的id 
+(re-frame/reg-sub :get-plan-list (fn [db _] (:plan-list db)))
 (re-frame/reg-sub :get-user-list (fn [db _] (:user-list db))) 
 (re-frame/reg-sub :get-current-page (fn [db _] (:current-page db)))
 (re-frame/reg-sub :is-logged-in (fn [db _] (:is-logged-in db)))
@@ -12,3 +12,11 @@
 (re-frame/reg-sub :get-plan-by-id
                   (fn [db [_ plan-id]]
                     (first (filter #(= (:id %) plan-id) (:plan-list db)))))
+
+(re-frame/reg-sub :tasks-by-plan-id
+                  :<-
+                  [:get-selected-plan-id] 
+                  (fn [db selected-plan-id]
+                    (let [plan (some #(when (= (:id %) selected-plan-id) %)
+                                     (:plan-list db))]
+                      (:tasks plan)))) 

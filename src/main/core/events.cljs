@@ -96,3 +96,17 @@
                                            %)
                                      items)))))
 
+
+(re-frame/reg-event-db
+ :toggle-task-completion
+ (fn [db [_ plan-id task-id]]
+   (update-in db
+              [:plan-list]
+              (fn [plans] (map (fn [plan]
+                                 (if (= (:id plan) plan-id)
+                                   (update plan :tasks (fn [tasks]
+                                                         (map (fn [task]
+                                                                (if (= (:id task) task-id)
+                                                                  (update task :is-completed not)
+                                                                  task))
+                                                              tasks))) plan)) plans)))))

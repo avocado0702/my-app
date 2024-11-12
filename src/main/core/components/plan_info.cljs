@@ -1,6 +1,10 @@
 (ns main.core.components.plan-info
   (:require [re-frame.core :as re-frame]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            ["@mui/material/Checkbox" :default Checkbox]
+            ["@mui/material/FormControlLabel" :default FormControlLabel]
+            ["@mui/material/TextField" :default TextField]
+            ["@mui/material/Button" :default Button]))
 
 (defn edit-btn
   []
@@ -52,6 +56,20 @@
                                                        .-value))}]]]]]
              [save-btn selected-item-id edited-title edited-text]]
             [:div.plan-info [:h2 (str "Plan Title: " (:titel current-plan))]
-             [:p (str "Plan Content: " (:description current-plan))]
-             [edit-btn edit-mode]])
+             [:p (str "Plan description: " (:description current-plan))]
+             [:div.tasks-info [:h3 "Your tasks:"]
+              (if (seq (:tasks current-plan))
+                (for [task (:tasks current-plan)]
+                  ^{:key (:id task)}
+                  [:div.task-item
+                   [:> FormControlLabel
+                    {:control (r/as-element [:> Checkbox
+                                             {:checked (:is-completed task),
+                                              :on-change
+                                                #(re-frame/dispatch
+                                                   [:toggle-task-completion
+                                                    @selected-item-id
+                                                    (:id task)])}]),
+                     :label (:description task)}]]) 
+                [:p "No tasks available."])] [edit-btn edit-mode]])
           [:p "Select a plan to see details"])))))
