@@ -1,8 +1,24 @@
 (ns main.core.components.plan-list
-  (:require [re-frame.core :as re-frame]))
+  (:require ["@mui/material/Fab" :default Fab]
+            [re-frame.core :as re-frame]))
 
-(defn add-btn []
-  [:button {:on-click #(re-frame/dispatch [:add-item])} "+"])
+(defn add-btn
+  []
+  [:> Fab
+   {:aria-label "add",
+    :size "medium",
+    :variant "outlined",
+    :sx {:width "26px",
+         :backgroundColor "white",
+         :color "#1877f2",
+         :height "26px",
+         :margin-top "2px",
+         :minHeight "unset",
+         :fontSize "20px",
+         :position "relative",
+         :zIndex 0,
+         :boxShadow "none"},
+    :onClick #(re-frame/dispatch [:add-item])} "+"])
 
 (defn delete-btn [item-id]
   [:button {:on-click #(re-frame/dispatch [:delete-item item-id])} "-"])
@@ -21,14 +37,12 @@
              [:div.list-element-buttons [delete-btn (:id item)]]]])))
 
 
-(defn plan-list []
+(defn plan-list
+  []
   (let [pl (re-frame/subscribe [:get-plan-list])]
-    (fn []
-      [:div.plan-list
-       [:h2 "Current Plan" [add-btn]]
-       (if (empty? @pl)
-         [:h3 "You have no plan"]
-         (for [item @pl]
-           ^{:key (:id item)}
-           [list-element item]))])))
-
+    (fn [] [:div.plan-list
+            [:div {:style {:display "flex", :alignItems "center"}} 
+             [:p "Current Plan"] [add-btn]] 
+            (if (empty? @pl)
+              [:h3 "You have no plan"]
+              (for [item @pl] ^{:key (:id item)} [list-element item]))])))

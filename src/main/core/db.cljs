@@ -4,15 +4,15 @@
   {:plan-list
    [{:id 1,
      :titel "plan 1",
-     :text
+     :description
      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"}
     {:id 2,
      :titel "plan 2",
-     :text
+     :description
      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"}
     {:id 3,
      :titel "plan 3",
-     :text
+     :description
      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"}],
    :user-list [{:id 1,
                 :username "superadmin",

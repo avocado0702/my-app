@@ -76,7 +76,7 @@
       (update db
               :plan-list
               conj
-              {:id new-id, :titel "new plan", :text "new plan introduction"}))))
+              {:id new-id, :titel "new plan", :description "new plan introduction"}))))
 
 
 
@@ -92,7 +92,7 @@
                                    (map #(if (= (:id %) selected-item-id)
                                            (assoc %
                                              :titel edited-title
-                                             :text edited-text)
+                                             :description edited-text)
                                            %)
                                      items)))))
 

@@ -29,7 +29,7 @@
         (when (and current-plan (not= @last-item-id @selected-item-id))
           (reset! last-item-id @selected-item-id) ;; 更新 last-item-id
           (reset! edited-title (:titel current-plan))
-          (reset! edited-text (:text current-plan)))
+          (reset! edited-text (:description current-plan)))
         (if @selected-item-id
           (if @edit-mode
             [:div.plan-info-edit [:h2 "Edit Plan"]
@@ -52,6 +52,6 @@
                                                        .-value))}]]]]]
              [save-btn selected-item-id edited-title edited-text]]
             [:div.plan-info [:h2 (str "Plan Title: " (:titel current-plan))]
-             [:p (str "Plan Content: " (:text current-plan))]
+             [:p (str "Plan Content: " (:description current-plan))]
              [edit-btn edit-mode]])
           [:p "Select a plan to see details"])))))
