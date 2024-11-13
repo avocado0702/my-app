@@ -79,18 +79,16 @@
 
 
 (re-frame/reg-event-db :update-plan
-                       (fn [db [_ selected-item-id edited-title edited-text]]
-                         (js/console.log "Updating a plan item:")
-                         (js/console.log "Updated item id:" selected-item-id)
-                         (js/console.log "Updated item title:" edited-title)
-                         (js/console.log "Updated item text:" edited-text)
+                       (fn [db [_ selected-item-id edited-title edited-text edited-tasks]]
+                         (js/console.log "Updating a plan item:") 
                          (update db
                                  :plan-list
                                  (fn [items]
                                    (map #(if (= (:id %) selected-item-id)
                                            (assoc %
                                              :titel edited-title
-                                             :description edited-text)
+                                             :description edited-text
+                                                  :tasks edited-tasks)
                                            %)
                                      items)))))
 

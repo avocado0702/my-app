@@ -19,6 +19,7 @@
      [:a
       {:class "navbar-link",
        :href "#contact",
+       
        :on-click #(re-frame/dispatch [:set-current-page :contact])} "Contact"]
      [:a
       {:class "navbar-link",

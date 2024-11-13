@@ -14,9 +14,8 @@
                     (first (filter #(= (:id %) plan-id) (:plan-list db)))))
 
 (re-frame/reg-sub :tasks-by-plan-id
-                  :<-
-                  [:get-selected-plan-id] 
-                  (fn [db selected-plan-id]
-                    (let [plan (some #(when (= (:id %) selected-plan-id) %)
+                  (fn [db [_ plan-id]]
+                    (js/console.log "Fetching tasks for plan id:" plan-id)
+                    (let [plan (some #(when (= (:id %) plan-id) %)
                                      (:plan-list db))]
-                      (:tasks plan)))) 
+                      (:tasks plan))))

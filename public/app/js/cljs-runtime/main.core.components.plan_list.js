@@ -39,25 +39,25 @@ return and__5000__auto__;
 main.core.components.plan_list.plan_list = (function main$core$components$plan_list$plan_list(){
 var pl = re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"get-plan-list","get-plan-list",246006684)], null));
 return (function (){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.plan-list","div.plan-list",954433672),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"display","display",242065432),"flex",new cljs.core.Keyword(null,"alignItems","alignItems",410331199),"center"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),"Current Plan"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [main.core.components.plan_list.add_btn], null)], null),((cljs.core.empty_QMARK_(cljs.core.deref(pl)))?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),"You have no plan"], null):(function (){var iter__5480__auto__ = (function main$core$components$plan_list$plan_list_$_iter__27665(s__27666){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.plan-list","div.plan-list",954433672),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"display","display",242065432),"flex",new cljs.core.Keyword(null,"alignItems","alignItems",410331199),"center"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),"Current Plan"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [main.core.components.plan_list.add_btn], null)], null),((cljs.core.empty_QMARK_(cljs.core.deref(pl)))?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),"You have no plan"], null):(function (){var iter__5480__auto__ = (function main$core$components$plan_list$plan_list_$_iter__27670(s__27671){
 return (new cljs.core.LazySeq(null,(function (){
-var s__27666__$1 = s__27666;
+var s__27671__$1 = s__27671;
 while(true){
-var temp__5804__auto__ = cljs.core.seq(s__27666__$1);
+var temp__5804__auto__ = cljs.core.seq(s__27671__$1);
 if(temp__5804__auto__){
-var s__27666__$2 = temp__5804__auto__;
-if(cljs.core.chunked_seq_QMARK_(s__27666__$2)){
-var c__5478__auto__ = cljs.core.chunk_first(s__27666__$2);
+var s__27671__$2 = temp__5804__auto__;
+if(cljs.core.chunked_seq_QMARK_(s__27671__$2)){
+var c__5478__auto__ = cljs.core.chunk_first(s__27671__$2);
 var size__5479__auto__ = cljs.core.count(c__5478__auto__);
-var b__27668 = cljs.core.chunk_buffer(size__5479__auto__);
-if((function (){var i__27667 = (0);
+var b__27673 = cljs.core.chunk_buffer(size__5479__auto__);
+if((function (){var i__27672 = (0);
 while(true){
-if((i__27667 < size__5479__auto__)){
-var item = cljs.core._nth(c__5478__auto__,i__27667);
-cljs.core.chunk_append(b__27668,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [main.core.components.plan_list.list_element,item], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(item)], null)));
+if((i__27672 < size__5479__auto__)){
+var item = cljs.core._nth(c__5478__auto__,i__27672);
+cljs.core.chunk_append(b__27673,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [main.core.components.plan_list.list_element,item], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(item)], null)));
 
-var G__27669 = (i__27667 + (1));
-i__27667 = G__27669;
+var G__27674 = (i__27672 + (1));
+i__27672 = G__27674;
 continue;
 } else {
 return true;
@@ -65,13 +65,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons(cljs.core.chunk(b__27668),main$core$components$plan_list$plan_list_$_iter__27665(cljs.core.chunk_rest(s__27666__$2)));
+return cljs.core.chunk_cons(cljs.core.chunk(b__27673),main$core$components$plan_list$plan_list_$_iter__27670(cljs.core.chunk_rest(s__27671__$2)));
 } else {
-return cljs.core.chunk_cons(cljs.core.chunk(b__27668),null);
+return cljs.core.chunk_cons(cljs.core.chunk(b__27673),null);
 }
 } else {
-var item = cljs.core.first(s__27666__$2);
-return cljs.core.cons(cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [main.core.components.plan_list.list_element,item], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(item)], null)),main$core$components$plan_list$plan_list_$_iter__27665(cljs.core.rest(s__27666__$2)));
+var item = cljs.core.first(s__27671__$2);
+return cljs.core.cons(cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [main.core.components.plan_list.list_element,item], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(item)], null)),main$core$components$plan_list$plan_list_$_iter__27670(cljs.core.rest(s__27671__$2)));
 }
 } else {
 return null;

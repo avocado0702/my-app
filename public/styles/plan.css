@@ -71,36 +71,5 @@ button:hover {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
   }
   
-  .plan-info h2, .plan-info-edit h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+
   
-  .plan-info p, .plan-info-edit label {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .plan-info-edit input[type="text"], .plan-info-edit textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .plan-info-edit table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .plan-info-edit td {
-    padding: 10px;
-    vertical-align: top;
-  }
-  
-  .plan-info-edit td:first-child {
-    width: 100px;
-    font-weight: bold;
-  }

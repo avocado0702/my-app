@@ -1,6 +1,5 @@
 (ns main.core.components.plan-list
-  (:require ["@mui/material/Fab" :default Fab]
-            ["@mui/icons-material/DeleteOutline" :default DeleteOutline]
+  (:require ["@mui/icons-material/DeleteOutline" :default DeleteOutline]
             ["@mui/icons-material/PlaylistAdd" :default PlaylistAdd]
             [re-frame.core :as re-frame]))
 

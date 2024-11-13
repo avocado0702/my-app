@@ -1,23 +1,30 @@
 (ns main.core.components.plan-info
   (:require [re-frame.core :as re-frame]
             [reagent.core :as r]
+            [main.core.components.tasks-manager :refer [task-manager]]
             ["@mui/material/Checkbox" :default Checkbox]
+            ["@mui/material/TextField" :default InputField]
             ["@mui/material/FormControlLabel" :default FormControlLabel]
-            ["@mui/material/TextField" :default TextField]
-            ["@mui/material/Button" :default Button]))
+            ["@mui/material/Button" :default Button]
+            ["@mui/material/ButtonGroup" :default ButtonGroup]
+            [cljs.core :as c]))
 
 (defn edit-btn
   []
-  [:button {:on-click #(re-frame/dispatch [:set-edit-mode true])} "Edit"])
+  [:> Button
+   {:variant "contained", :on-click #(re-frame/dispatch [:set-edit-mode true])}
+   "Edit"])
 
 (defn save-btn
-  [selected-item-id edited-title edited-text]
-  [:button
-   {:on-click #(do (re-frame/dispatch [:update-plan @selected-item-id @edited-title
-                                       @edited-text])
-                   (re-frame/dispatch [:set-edit-mode false])
-                   )}
-   "Save"])
+  [selected-item-id edited-title edited-text edited-tasks]
+  [:> Button
+   {:on-click #(do (re-frame/dispatch [:update-plan @selected-item-id
+                                       @edited-title @edited-text @edited-tasks])
+                   (re-frame/dispatch [:set-edit-mode false]))} "Save"])
+
+(defn back-btn
+  []
+  [:> Button {:on-click #(re-frame/dispatch [:set-edit-mode false])} "Back"])
 
 (defn plan-info
   []
@@ -25,6 +32,7 @@
         selected-item-id (re-frame/subscribe [:get-selected-plan-id])
         edited-title (r/atom nil)
         edited-text (r/atom nil)
+        edited-tasks (r/atom nil)
         last-item-id (r/atom nil)]
     (fn []
       (let [current-plan @(re-frame/subscribe [:get-plan-by-id
@@ -36,34 +44,36 @@
         (if @selected-item-id
           (if @edit-mode
             [:div.plan-info-edit [:h2 "Edit Plan"]
-             [:table
-              [:tbody
-               [:tr [:td "Title: "]
-                [:td
-                 [:input
-                  {:type "text",
-                   :value @edited-title,
-                   :on-change #(reset! edited-title (-> %
-                                                        .-target
-                                                        .-value))}]]]
-               [:tr [:td "Content: "]
-                [:td
-                 [:textarea
-                  {:value @edited-text,
-                   :on-change #(reset! edited-text (-> %
-                                                       .-target
-                                                       .-value))}]]]
-               [:tr [:td "Tasks: "]
-                [:td
-                 (if (seq (:tasks current-plan))
-                   (for [task (:tasks current-plan)]
-                     ^{:key (:id task)}
-                     [:div.task-item
-                      [:p (str (:description task))]])
-                   [:p "No tasks"])]]]]
-             
-
-             [save-btn selected-item-id edited-title edited-text]]
+             [:div
+              {:style {:display "flex",
+                       :flexDirection "column",
+                       :gap "10px",
+                       :marginBottom "20px"}}
+              [:div.plan-title
+               [:> InputField
+                {:variant "outlined",
+                 :label "Title",
+                 :type "text",
+                 :value @edited-title,
+                 :on-change #(reset! edited-title (-> %
+                                                      .-target
+                                                      .-value))}]]
+              [:div.plan-info-content
+               [:> InputField
+                {:variant "outlined",
+                 :label "Content",
+                 :value @edited-text,
+                 :multiline true,
+                 :maxRows 4,
+                 :on-change #(reset! edited-text (-> %
+                                                     .-target
+                                                     .-value))}]]]
+             [task-manager edited-tasks]
+             [:> ButtonGroup
+              {:variant "text",
+               :sx {:gap "16px", :margin-left "10px"}} [back-btn]
+              [save-btn selected-item-id edited-title edited-text
+               edited-tasks]]]
             [:div.plan-info [:h2 (str (:titel current-plan))]
              [:p (str (:description current-plan))]
              [:div.tasks-info [:h3 "Your tasks:"]
@@ -80,5 +90,5 @@
                                                     @selected-item-id
                                                     (:id task)])}]),
                      :label (:description task)}]])
-                [:p "No tasks available."])] [edit-btn edit-mode]])
+                [:p "No tasks available."])] [edit-btn]])
           [:p "Select a plan to see details"])))))
