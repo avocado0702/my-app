@@ -4,8 +4,7 @@
   {:plan-list
      [{:id 1,
        :titel "my plan for monday",
-       :description
-         "things i need to do on monday",
+       :description "things i need to do on monday",
        :completed-tasks 2,
        :total-tasks 3,
        :tasks [{:id 1, :description "dientist", :is-completed false}
@@ -25,7 +24,7 @@
        :completed-tasks 0,
        :total-tasks 0,
        :tasks []}],
-   
+   :edited-tasks nil,
    :user-list [{:id 1,
                 :username "superadmin",
                 :password "topSuperAdmin",

@@ -19,8 +19,10 @@
   [selected-item-id edited-title edited-text edited-tasks]
   [:> Button
    {:on-click #(do (re-frame/dispatch [:update-plan @selected-item-id
-                                       @edited-title @edited-text @edited-tasks])
-                   (re-frame/dispatch [:set-edit-mode false]))} "Save"])
+                                       @edited-title @edited-text
+                                       @edited-tasks])
+                   (re-frame/dispatch [:set-edit-mode false])
+                   (re-frame/dispatch [:reset-edited-tasks]))} "Save"])
 
 (defn back-btn
   []
@@ -30,9 +32,9 @@
   []
   (let [edit-mode (re-frame/subscribe [:get-edit-mode])
         selected-item-id (re-frame/subscribe [:get-selected-plan-id])
+        edited-tasks (re-frame/subscribe [:get-edited-tasks])
         edited-title (r/atom nil)
         edited-text (r/atom nil)
-        edited-tasks (r/atom nil)
         last-item-id (r/atom nil)]
     (fn []
       (let [current-plan @(re-frame/subscribe [:get-plan-by-id
@@ -70,8 +72,8 @@
                                                      .-value))}]]]
              [task-manager edited-tasks]
              [:> ButtonGroup
-              {:variant "text",
-               :sx {:gap "16px", :margin-left "10px"}} [back-btn]
+              {:variant "text", :sx {:gap "16px", :margin-left "10px"}}
+              [back-btn]
               [save-btn selected-item-id edited-title edited-text
                edited-tasks]]]
             [:div.plan-info [:h2 (str (:titel current-plan))]

@@ -5,32 +5,29 @@
    [re-frame.core :as re-frame]))
 
 (defn add-task
-  [tasks]
-  (let [next-id (if (empty? @tasks) 1 (inc (apply max (map :id @tasks))))]
+  [edited-tasks]
+  (let [next-id (if (empty? @edited-tasks)
+                  1
+                  (inc (apply max (map :id @edited-tasks))))
+        new-task {:id next-id, :description "", :is-completed false}]
     [:> AddCircle
      {:sx {:color "#D3D3D3",
            "&:hover" {:color "#1877f2", :cursor "pointer"},
            :margin-left "10px"},
-      :on-click #(swap! tasks conj {:id next-id, :description ""})}]))
+      :on-click #(re-frame/dispatch [:add-default-task new-task])}]))
 
 
 (defn task-manager
   [edited-tasks]
   (let [selected-item-id (re-frame/subscribe [:get-selected-plan-id])
         tasks (re-frame/subscribe [:tasks-by-plan-id @selected-item-id])]
-    ;; 初始化 edited-tasks 只在 tasks 改变时
-    (when (and @tasks (not= @edited-tasks @tasks)) (reset! edited-tasks @tasks))
+    (when (and @tasks (not= @edited-tasks @tasks)) (re-frame/dispatch [:set-edited-tasks @tasks]))
     (fn []
-      (js/console.log "Rendering task-manager")
-      (js/console.log "selected-item-id:" @selected-item-id)
-      (js/console.log "Subscribed tasks:" @tasks)
-      (js/console.log "Edited tasks:" @edited-tasks)
       [:div.tasks-manager
        {:style {:display "flex",
                 :flexDirection "column",
                 :gap "10px",
                 :marginBottom "20px"}}
-       ;; 显示任务列表
        (if (seq @edited-tasks)
          (for [task @edited-tasks]
            ^{:key (:id task)}
@@ -39,11 +36,7 @@
              {:label (str "Task " (:id task)),
               :variant "outlined",
               :value (:description task),
-              :on-change #(swap! edited-tasks assoc-in
-                            [(:id task) :description]
-                            (-> %
-                                .-target
-                                .-value)),
+              :on-change #(re-frame/dispatch [:update-task-description (:id task) (-> % .-target .-value)]),
               :fullWidth true,
               :sx {:margin-top "10px"}}]])
          [:p "No tasks available"])

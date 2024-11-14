@@ -2,6 +2,10 @@
   (:require [re-frame.core :as re-frame]))
 
 (re-frame/reg-sub :get-plan-list (fn [db _] (:plan-list db)))
+
+(re-frame/reg-sub :get-edited-tasks (fn [db _] (:edited-tasks db)))
+
+
 (re-frame/reg-sub :get-user-list (fn [db _] (:user-list db))) 
 (re-frame/reg-sub :get-current-page (fn [db _] (:current-page db)))
 (re-frame/reg-sub :is-logged-in (fn [db _] (:is-logged-in db)))
